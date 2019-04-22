@@ -43,9 +43,9 @@ g1 = ggplot(data = newdata1) + geom_point(mapping= aes (x = Date,y = AuthorID,co
 g1
 
 
-g2  =  ggplot(data  = data) + geom_line(mapping = aes ( x = timehour , y = posemo),color = "red")
+g2  =  ggplot(data  = data) + geom_point(mapping = aes ( x = timehour , y = posemo),color = "red",position = position_jitter(w = 0.1, h = 0))
 
-g2  = g2+ geom_line(mapping = aes ( x = timehour , y = negemo),color = "blue")
+g2  = g2+ geom_point(mapping = aes ( x = timehour , y = negemo),color = "blue")
 g2
 
 #temp = group_by(newdata,AuthorID)
