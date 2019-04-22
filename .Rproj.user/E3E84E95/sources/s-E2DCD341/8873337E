@@ -12,15 +12,15 @@
     "path" : null,
     "project_path" : null,
     "properties" : {
-        "cacheKey" : "3106AD88",
+        "cacheKey" : "578505C3",
         "caption" : "Threads",
-        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=Threads&cache_key=3106AD88",
-        "displayedObservations" : 300,
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=Threads&cache_key=578505C3",
+        "displayedObservations" : "300",
         "environment" : "",
         "object" : "Threads",
-        "preview" : 0,
-        "totalObservations" : 300,
-        "variables" : 2
+        "preview" : "0",
+        "totalObservations" : "300",
+        "variables" : "2"
     },
     "relative_order" : 3,
     "source_on_save" : false,

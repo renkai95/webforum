@@ -14,3 +14,7 @@ data=gdata
 data$year <- format(dates, "%Y")
 
 test=aggregate(data[7:30], data[31], mean)
+
+
+by(data,data$year, function (df) cor(df$Analytic,df$WC))
+boxplot(money~year,data = data)
