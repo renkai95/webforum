@@ -12,9 +12,9 @@
     "path" : null,
     "project_path" : null,
     "properties" : {
-        "cacheKey" : "1C1CD8DA",
+        "cacheKey" : "56DA4F84",
         "caption" : "Authors",
-        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=Authors&cache_key=1C1CD8DA",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=Authors&cache_key=56DA4F84",
         "displayedObservations" : "2335",
         "environment" : "",
         "object" : "Authors",
