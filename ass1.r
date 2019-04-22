@@ -15,9 +15,25 @@ data$year <- format(dates, "%Y")
 
 test=aggregate(data[7:30], data[31], mean)
 
-newdata = head(gdata[order(length(gdata$AuthorID)),],30)
+#newdata = head(gdata[order(length(gdata$AuthorID)),],30)
+newdata = data %>% 
+  group_by(AuthorID) %>%
+  filter(n()>=100)
+
+newdata = filter(newdata,AuthorID>=0)
+#qplot(Date,Tone,data=newdata,color = factor(AuthorID))
+#qplot(year,money,data=newdata,color = factor(AuthorID))
+
+g = ggplot(data = newdata) + geom_point(mapping= aes (x = Date,y = WC,color = factor(ThreadID)))
+g
+
+newdata1 = data %>% 
+  group_by(ThreadID) %>%
+  filter(n()>=100)
+
+by(newdata, data$AuthorID, function(df) summary(df) )
 
 by(data,data$year, function (df) cor(df$Analytic,df$WC))
 boxplot(money~year,data = data)
-head( data, 1000 )
+
 
