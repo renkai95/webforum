@@ -1,8 +1,9 @@
 install.packages("ggplot2")
 install.packages("tidyverse")
+install.packages("psych")
 
 library(tidyverse)
-
+library(psych)
 gdata <- read.csv("C:\\Users\\User\\Google Drive\\Monash units\\2019 Sem 1\\FIT3152\\Assignment 1\\webforum.csv")
 Threads = aggregate(data.frame(count = gdata$ThreadID), list(value = gdata$ThreadID), length)
 Authors = aggregate(data.frame(count = gdata$AuthorID), list(value = gdata$AuthorID), length)
@@ -29,8 +30,11 @@ g
 
 newdata1 = data %>% 
   group_by(ThreadID) %>%
-  filter(n()>=100)
-
+  filter(n()>=300)
+  
+g1 = ggplot(data = newdata1) + geom_point(mapping= aes (x = Date,y = AuthorID,color = factor(ThreadID)))
+g1
+describeBy(newdata, group=AuthorID)
 by(newdata, data$AuthorID, function(df) summary(df) )
 
 by(data,data$year, function (df) cor(df$Analytic,df$WC))
