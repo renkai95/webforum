@@ -2,7 +2,9 @@ install.packages("ggplot2")
 install.packages("tidyverse")
 install.packages("psych")
 install.packages("dplyr")
+install.packages("lubridate")
 setwd("C:\\Users\\User\\Google Drive\\Monash units\\2019 Sem 1\\FIT3152\\Assignment 1\\webforum")
+library(lubridate)
 library(tidyverse)
 library(psych)
 library(dplyr)
@@ -14,8 +16,11 @@ Authors = aggregate(data.frame(count = gdata$AuthorID), list(value = gdata$Autho
 #qplot(carat, price, data = gdata, color = color, size =clarity, alpha = cut)
 dates <- as.Date(gdata$Date, "%Y-%m-%d")
 data=gdata
+y= as.POSIXlt(data$Time,format="%H:%M")
 data$year <- format(dates, "%Y")
+x=hour(y)
 
+data$timehour=x
 test=aggregate(data[7:30], data[31], mean)
 
 #newdata = head(gdata[order(length(gdata$AuthorID)),],30)
@@ -27,7 +32,7 @@ newdata = filter(newdata,AuthorID>=0)
 #qplot(Date,Tone,data=newdata,color = factor(AuthorID))
 #qplot(year,money,data=newdata,color = factor(AuthorID))
 
-g = ggplot(data = newdata) + geom_point(mapping= aes (x = Date,y = we,color = factor(ThreadID))) +  facet_wrap(~AuthorID)+ theme(legend.position = "none")
+g = ggplot(data = newdata) + geom_point(mapping= aes (x = year,y = affect,color = factor(ThreadID))) +  facet_wrap(~AuthorID)+ theme(legend.position = "none")
 g
 
 newdata1 = data %>% 
@@ -37,8 +42,14 @@ newdata1 = data %>%
 g1 = ggplot(data = newdata1) + geom_point(mapping= aes (x = Date,y = AuthorID,color = factor(ThreadID)))
 g1
 
-temp = group_by(newdata,AuthorID)
-s = summarize(temp,count=n(),)
+
+g2  =  ggplot(data  = data) + geom_line(mapping = aes ( x = timehour , y = posemo),color = "red")
+
+g2  = g2+ geom_line(mapping = aes ( x = timehour , y = negemo),color = "blue")
+g2
+
+#temp = group_by(newdata,AuthorID)
+#s = summarize(temp,count=n(),)
 capture.output(s, file = "myfile.txt")
 
 
