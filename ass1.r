@@ -1,9 +1,11 @@
 install.packages("ggplot2")
 install.packages("tidyverse")
 install.packages("psych")
-
+install.packages("dplyr")
+setwd("C:\\Users\\User\\Google Drive\\Monash units\\2019 Sem 1\\FIT3152\\Assignment 1\\webforum")
 library(tidyverse)
 library(psych)
+library(dplyr)
 gdata <- read.csv("C:\\Users\\User\\Google Drive\\Monash units\\2019 Sem 1\\FIT3152\\Assignment 1\\webforum.csv")
 Threads = aggregate(data.frame(count = gdata$ThreadID), list(value = gdata$ThreadID), length)
 Authors = aggregate(data.frame(count = gdata$AuthorID), list(value = gdata$AuthorID), length)
@@ -25,7 +27,7 @@ newdata = filter(newdata,AuthorID>=0)
 #qplot(Date,Tone,data=newdata,color = factor(AuthorID))
 #qplot(year,money,data=newdata,color = factor(AuthorID))
 
-g = ggplot(data = newdata) + geom_point(mapping= aes (x = Date,y = WC,color = factor(ThreadID)))
+g = ggplot(data = newdata) + geom_point(mapping= aes (x = Date,y = we,color = factor(ThreadID))) +  facet_wrap(~AuthorID)+ theme(legend.position = "none")
 g
 
 newdata1 = data %>% 
@@ -34,7 +36,12 @@ newdata1 = data %>%
   
 g1 = ggplot(data = newdata1) + geom_point(mapping= aes (x = Date,y = AuthorID,color = factor(ThreadID)))
 g1
-describeBy(newdata, group=AuthorID)
+
+temp = group_by(newdata,AuthorID)
+s = summarize(temp,count=n(),)
+capture.output(s, file = "myfile.txt")
+
+
 by(newdata, data$AuthorID, function(df) summary(df) )
 
 by(data,data$year, function (df) cor(df$Analytic,df$WC))
