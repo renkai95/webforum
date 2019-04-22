@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1555911411262.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8873337E",
+    "lastKnownWriteTime" : 30962749951443048,
+    "last_content_update" : 1555911411262,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "3106AD88",
+        "caption" : "Threads",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=Threads&cache_key=3106AD88",
+        "displayedObservations" : 300,
+        "environment" : "",
+        "object" : "Threads",
+        "preview" : 0,
+        "totalObservations" : 300,
+        "variables" : 2
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
