@@ -1,0 +1,350 @@
+$WC
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[1L]] and dots[[2L]][[1L]]
+t = -0.87019, df = 1169.9, p-value = 0.3844
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -18.700039   7.208802
+sample estimates:
+mean of x mean of y 
+ 106.5468  112.2924 
+
+
+$Analytic
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[2L]] and dots[[2L]][[2L]]
+t = 0.61504, df = 1217.6, p-value = 0.5386
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.212155  2.319199
+sample estimates:
+mean of x mean of y 
+ 60.42754  59.87402 
+
+
+$Clout
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[3L]] and dots[[2L]][[3L]]
+t = 3.3828, df = 1226.7, p-value = 0.00074
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 1.170973 4.404521
+sample estimates:
+mean of x mean of y 
+ 57.21600  54.42825 
+
+
+$Authentic
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[4L]] and dots[[2L]][[4L]]
+t = -1.0131, df = 1231.4, p-value = 0.3112
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.8949268  0.9233176
+sample estimates:
+mean of x mean of y 
+ 38.60154  39.58735 
+
+
+$Tone
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[5L]] and dots[[2L]][[5L]]
+t = -4.8554, df = 1225.4, p-value = 1.357e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -7.596260 -3.224095
+sample estimates:
+mean of x mean of y 
+ 44.52074  49.93092 
+
+
+$ppron
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[6L]] and dots[[2L]][[6L]]
+t = 2.136, df = 1229.7, p-value = 0.03287
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.02797158 0.65826993
+sample estimates:
+mean of x mean of y 
+ 7.519637  7.176516 
+
+
+$i
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[7L]] and dots[[2L]][[7L]]
+t = 0.45265, df = 1237.3, p-value = 0.6509
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.1849430  0.2958792
+sample estimates:
+mean of x mean of y 
+ 3.380423  3.324955 
+
+
+$we
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[8L]] and dots[[2L]][[8L]]
+t = 0.5882, df = 1227.6, p-value = 0.5565
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.0765381  0.1420829
+sample estimates:
+mean of x mean of y 
+0.8631605 0.8303881 
+
+
+$you
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[9L]] and dots[[2L]][[9L]]
+t = -1.2917, df = 1211.8, p-value = 0.1967
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.27804985  0.05727203
+sample estimates:
+mean of x mean of y 
+ 1.384936  1.495325 
+
+
+$shehe
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[10L]] and dots[[2L]][[10L]]
+t = 0.77175, df = 1244.2, p-value = 0.4404
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.06176246  0.14186354
+sample estimates:
+mean of x mean of y 
+0.6278935 0.5878430 
+
+
+$they
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[11L]] and dots[[2L]][[11L]]
+t = 6.1263, df = 1302.2, p-value = 1.19e-09
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.2209686 0.4291543
+sample estimates:
+mean of x mean of y 
+1.2631120 0.9380505 
+
+
+$number
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[12L]] and dots[[2L]][[12L]]
+t = -6.0539, df = 1157.3, p-value = 1.908e-09
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.6151567 -0.8244877
+sample estimates:
+mean of x mean of y 
+ 2.019537  3.239359 
+
+
+$affect
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[13L]] and dots[[2L]][[13L]]
+t = -0.55015, df = 1228.2, p-value = 0.5823
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.4391532  0.2467991
+sample estimates:
+mean of x mean of y 
+ 5.662235  5.758412 
+
+
+$posemo
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[14L]] and dots[[2L]][[14L]]
+t = -2.1728, df = 1284.8, p-value = 0.02998
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.52109701 -0.02659451
+sample estimates:
+mean of x mean of y 
+ 3.454819  3.728664 
+
+
+$negemo
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[15L]] and dots[[2L]][[15L]]
+t = 1.387, df = 1178.2, p-value = 0.1657
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.07512475  0.43757621
+sample estimates:
+mean of x mean of y 
+ 2.152751  1.971525 
+
+
+$anx
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[16L]] and dots[[2L]][[16L]]
+t = 2.0117, df = 1477.8, p-value = 0.04443
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.001083583 0.085869193
+sample estimates:
+mean of x mean of y 
+0.2438735 0.2003971 
+
+
+$anger
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[17L]] and dots[[2L]][[17L]]
+t = 1.3515, df = 1161.7, p-value = 0.1768
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.06205678  0.33678631
+sample estimates:
+mean of x mean of y 
+0.9610200 0.8236552 
+
+
+$social
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[18L]] and dots[[2L]][[18L]]
+t = 5.857, df = 1263.7, p-value = 6.003e-09
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.6736568 1.3522475
+sample estimates:
+mean of x mean of y 
+ 8.832185  7.819233 
+
+
+$family
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[19L]] and dots[[2L]][[19L]]
+t = 3.8599, df = 1381.8, p-value = 0.0001187
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.08488072 0.26031774
+sample estimates:
+mean of x mean of y 
+0.3707310 0.1981318 
+
+
+$friend
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[20L]] and dots[[2L]][[20L]]
+t = 2.2475, df = 1352.7, p-value = 0.02477
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.00925865 0.13638267
+sample estimates:
+mean of x mean of y 
+0.3657990 0.2929783 
+
+
+$leisure
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[21L]] and dots[[2L]][[21L]]
+t = -0.95434, df = 1310.6, p-value = 0.3401
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.20921434  0.07227764
+sample estimates:
+mean of x mean of y 
+ 1.275584  1.344052 
+
+
+$money
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[22L]] and dots[[2L]][[22L]]
+t = 1.8893, df = 1192, p-value = 0.05909
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.004006387  0.212360817
+sample estimates:
+mean of x mean of y 
+0.4903505 0.3861733 
+
+
+$relig
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[23L]] and dots[[2L]][[23L]]
+t = -0.36869, df = 1157.1, p-value = 0.7124
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.2358289  0.1612181
+sample estimates:
+mean of x mean of y 
+0.6190845 0.6563899 
+
+
+$swear
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[24L]] and dots[[2L]][[24L]]
+t = -0.12444, df = 1141.1, p-value = 0.901
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.1952471  0.1719578
+sample estimates:
+mean of x mean of y 
+0.2928770 0.3045217 
+
+
+$QMark
+
+	Welch Two Sample t-test
+
+data:  dots[[1L]][[25L]] and dots[[2L]][[25L]]
+t = -0.455, df = 1362.5, p-value = 0.6492
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.2695160  0.1680312
+sample estimates:
+mean of x mean of y 
+ 1.045476  1.096218 
+
+

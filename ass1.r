@@ -27,7 +27,9 @@ test=aggregate(data[7:30], data[31], mean)
 newdata = data %>% 
   group_by(AuthorID) %>%
   filter(n()>=100)
-
+anons = data %>%
+  group_by(AuthorID) %>%
+  filter(AuthorID<0)
 newdata = filter(newdata,AuthorID>=0)
 #qplot(Date,Tone,data=newdata,color = factor(AuthorID))
 #qplot(year,money,data=newdata,color = factor(AuthorID))
@@ -43,8 +45,7 @@ g1 = ggplot(data = newdata1) + geom_point(mapping= aes (x = Date,y = AuthorID,co
 g1
 
 
-g2  =  ggplot(data  = data) + geom_point(mapping = aes ( x = timehour , y = posemo),color = "red",position = position_jitter(w = 0.1, h = 0))
-
+g2  =  ggplot(data  = anons) + geom_point(mapping = aes ( x = timehour , y = posemo),color = "red",position = position_jitter(w = 0.1, h = 0))
 g2  = g2+ geom_point(mapping = aes ( x = timehour , y = negemo),color = "blue")
 g2
 
@@ -58,6 +59,7 @@ by(newdata, data$AuthorID, function(df) summary(df) )
 by(data,data$year, function (df) cor(df$Analytic,df$WC))
 boxplot(money~year,data = data)
 
-t.test(data$Clout,newdata$Clout)
+t.test(data$anger,anons$anger,alternative="great")
 
+t.test_results <- mapply(t.test, x= data[,6:30], y = newdata[,6:30], SIMPLIFY = F)
       
