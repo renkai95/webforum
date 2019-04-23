@@ -58,4 +58,6 @@ by(newdata, data$AuthorID, function(df) summary(df) )
 by(data,data$year, function (df) cor(df$Analytic,df$WC))
 boxplot(money~year,data = data)
 
+t.test(data$Clout,newdata$Clout)
 
+      
