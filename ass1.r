@@ -27,6 +27,9 @@ test=aggregate(data[7:30], data[31], mean)
 newdata = data %>% 
   group_by(AuthorID) %>%
   filter(n()>=100)
+newdata = data %>% 
+  group_by(AuthorID) %>%
+  filter(n()>=100)
 anons = data %>%
   group_by(AuthorID) %>%
   filter(AuthorID<0)
@@ -45,8 +48,8 @@ g1 = ggplot(data = newdata1) + geom_point(mapping= aes (x = Date,y = AuthorID,co
 g1
 
 
-g2  =  ggplot(data  = anons) + geom_point(mapping = aes ( x = timehour , y = posemo),color = "red",position = position_jitter(w = 0.1, h = 0))
-g2  = g2+ geom_point(mapping = aes ( x = timehour , y = negemo),color = "blue")
+g2  =  ggplot(data  = data) + geom_point(mapping = aes ( x = timehour , y = posemo),color = "blue",position = position_jitter(w = 0.1, h = 0))
+g2  = g2+ geom_point(mapping = aes ( x = timehour , y = negemo),color = "red") + ylab("posemo(blue) and negemo(red)")
 g2
 
 #temp = group_by(newdata,AuthorID)
@@ -61,5 +64,7 @@ boxplot(money~year,data = data)
 
 t.test(data$anger,anons$anger,alternative="great")
 
-t.test_results <- mapply(t.test, x= data[,6:30], y = newdata[,6:30], SIMPLIFY = F)
-      
+s = mapply(t.test, x= data[,6:30], y = newdata[,6:30], SIMPLIFY = F)
+capture.output(s, file = "population-topposters.txt")
+s = mapply(t.test, x= data[,6:30], y = anons[,6:30], SIMPLIFY = F)
+capture.output(s, file = "population-anon.txt")
