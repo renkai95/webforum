@@ -11,6 +11,7 @@ library(dplyr)
 gdata <- read.csv("C:\\Users\\User\\Google Drive\\Monash units\\2019 Sem 1\\FIT3152\\Assignment 1\\webforum.csv")
 Threads = aggregate(data.frame(count = gdata$ThreadID), list(value = gdata$ThreadID), length)
 Authors = aggregate(data.frame(count = gdata$AuthorID), list(value = gdata$AuthorID), length)
+AuthorsNamed = Authors [2:nrow(Authors),]
 #with(gdata, plot(AuthorID,Tone , col =ThreadID ,pch=as.numeric(ThreadID), main = ("webforum data")))
 #with(gdata, plot(Date,money , col =head(sort(filter(gdata$AuthorID,AuthorID>=0),decreasing=TRUE),3) , main = ("webforum data")))
 #qplot(carat, price, data = gdata, color = color, size =clarity, alpha = cut)
@@ -26,18 +27,34 @@ test=aggregate(data[7:30], data[31], mean)
 #newdata = head(gdata[order(length(gdata$AuthorID)),],30)
 newdata = data %>% 
   group_by(AuthorID) %>%
-  filter(n()>=100)
+  filter(n()>=97)
+threadcount = data %>%
+  group_by(AuthorID,ThreadID) %>%
+  summarize(n())
+AuthorIDCount = threadcount %>%
+  group_by(AuthorID) %>%
+  summarize(n())
+AuthorIDCount= cbind(AuthorIDCount,aggregate(threadcount[3],threadcount[1],sum))
+AuthorIDCount = AuthorIDCount[,c(1,2,4)]
 newdata2 = data %>% 
   group_by(AuthorID) %>%
-  filter(n()<100)
+  filter(n()<97)
 anons = data %>%
   group_by(AuthorID) %>%
   filter(AuthorID<0)
 newdata = filter(newdata,AuthorID>=0)
+
+newdatamean=aggregate(newdata[,6:30],list(newdata$timehour),mean)
+less100mean=aggregate(newdata2[,6:30],list(newdata2$timehour),mean)
 #qplot(Date,Tone,data=newdata,color = factor(AuthorID))
 #qplot(year,money,data=newdata,color = factor(AuthorID))
+plot(density(AuthorsNamed[,2]),main="Distribution of posts")
+plot(density(newdata$timehour),main="Distribution of posts")
+lines(density(newdata2$timehour),main="Distribution of posts")
 
-g = ggplot(data = newdata) + geom_point(mapping= aes (x = year,y = affect,color = factor(ThreadID))) +  facet_wrap(~AuthorID)+ theme(legend.position = "none")
+normGraph = ggplot() + geom_density(data =newdata,mapping = aes(x = timehour,color="top posters n = 4963"))+geom_density(data =newdata2,mapping = aes(x = timehour,color="other posters n = 13929")) + ggtitle("Distribution of posts by hour")
+normGraph
+g = ggplot(data = newdata) + geom_point(mapping= aes (x = year,y = affect,color = factor(AuthorID))) +  facet_wrap(~ThreadID)+ theme(legend.position = "none")
 g
 
 newdata1 = data %>% 
@@ -48,9 +65,27 @@ g1 = ggplot(data = newdata1) + geom_point(mapping= aes (x = Date,y = AuthorID,co
 g1
 
 
-g2  =  ggplot(data  = newdata2) + geom_point(mapping = aes ( x = timehour , y = negemo),color = "red",position = position_jitter(w = 0.1, h = 0))
-g2  = g2#+ geom_point(mapping = aes ( x = timehour , y = negemo),color = "red") + ylab("posemo(blue) and negemo(red)")
+g2  =  ggplot(data  = data) + geom_point(mapping = aes ( x = timehour , y = posemo),color = "blue",position = position_jitter(w = 0.1, h = 0))
+g2  = g2+ geom_point(mapping = aes ( x = timehour , y = negemo),color = "red") + ylab("posemo(blue) and negemo(red)")
 g2
+
+g3  =  ggplot() + geom_line(data  = newdatamean,mapping = aes ( x = as.numeric(row.names(newdatamean)) , y = affect),color = "blue",position = position_jitter(w = 0.1, h = 0)) +ggtitle("Mean Negative Emotions for active posters(blue) and regular posters (red)")
+g3  = g3+ geom_line(data  = less100mean,mapping = aes (x= as.numeric(row.names(newdatamean)), y = affect),color = "red") + ylab("posemo")+xlab("hour") + scale_x_continuous(limits = c(0, 23))+ scale_x_continuous("hour", labels = as.numeric(row.names(newdatamean)), breaks = as.numeric(row.names(newdatamean)))
+g3
+
+g3  =  ggplot() + geom_line(data  = newdatamean,mapping = aes ( x = as.numeric(row.names(newdatamean)) , y = negemo),color = "blue",position = position_jitter(w = 0.1, h = 0)) +ggtitle("Mean Negative Emotions for active posters(blue) and regular posters (red)")
+g3  = g3+ geom_line(data  = less100mean,mapping = aes (x= as.numeric(row.names(newdatamean)), y = negemo),color = "red") + ylab("posemo")+xlab("hour") + scale_x_continuous(limits = c(0, 23))+ scale_x_continuous("hour", labels = as.numeric(row.names(newdatamean)), breaks = as.numeric(row.names(newdatamean)))
+g3
+g3  =  ggplot(data  = newdatamean) + geom_line(mapping = aes ( x = as.numeric(row.names(newdatamean)) , y = posemo),color = "blue") +ggtitle("Mean Positive Emotions for posters with >97 posts")
+g3  = g3 + scale_x_continuous(limits = c(0, 23))+ scale_x_continuous("hour", labels = as.numeric(row.names(newdatamean)), breaks = as.numeric(row.names(newdatamean)))
+g3
+
+g3  =  ggplot(data  = less100mean) + geom_line(mapping = aes ( x = as.numeric(row.names(less100mean)) , y = posemo),color = "blue",position = position_jitter(w = 0.1, h = 0))
+g3  = g3+ geom_line(mapping = aes (x= as.numeric(row.names(less100mean)), y = negemo),color = "red") + ylab("posemo(blue) and negemo(red)")+xlab("hour") + scale_x_continuous(limits = c(0, 23))+ scale_x_continuous("hour", labels = as.numeric(row.names(less100mean)), breaks = as.numeric(row.names(less100mean)))
+g3
+g3  =  ggplot(data  = less100mean) + geom_line(mapping = aes ( x = as.numeric(row.names(less100mean)) , y = posemo),color = "blue")+ggtitle("Mean Positive Emotions for posters with <100 posts")
+g3  = g3 + scale_x_continuous(limits = c(0, 23))+ scale_x_continuous("hour", labels = as.numeric(row.names(less100mean)), breaks = as.numeric(row.names(less100mean)))
+g3
 
 #temp = group_by(newdata,AuthorID)
 #s = summarize(temp,count=n(),)
@@ -68,3 +103,4 @@ s = mapply(t.test, x= data[,6:30], y = newdata[,6:30], SIMPLIFY = F)
 capture.output(s, file = "population-topposters.txt")
 s = mapply(t.test, x= data[,6:30], y = anons[,6:30], SIMPLIFY = F)
 capture.output(s, file = "population-anon.txt")
+cor(newdatamean$posemo,less100mean$posemo)
