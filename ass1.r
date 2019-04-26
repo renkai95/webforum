@@ -36,7 +36,12 @@ AuthorIDCount = threadcount %>%
   summarize(n())
 AuthorIDCount= cbind(AuthorIDCount,aggregate(threadcount[3],threadcount[1],sum))
 AuthorIDCount = AuthorIDCount[,c(1,2,4)]
-newdata2 = data %>% 
+names(AuthorIDCount) [3] = "postcount"
+names(AuthorIDCount)[2] = "threadcount"
+AuthorIDCount = AuthorIDCount[2:nrow(AuthorIDCount),]
+sociallyconnected= filter(AuthorIDCount,threadcount>36)
+
+threanewdata2 = data %>% 
   group_by(AuthorID) %>%
   filter(n()<97)
 anons = data %>%
@@ -54,6 +59,11 @@ lines(density(newdata2$timehour),main="Distribution of posts")
 
 normGraph = ggplot() + geom_density(data =newdata,mapping = aes(x = timehour,color="top posters n = 4963"))+geom_density(data =newdata2,mapping = aes(x = timehour,color="other posters n = 13929")) + ggtitle("Distribution of posts by hour")
 normGraph
+normGraphthreads = ggplot() + geom_density(data =AuthorIDCount,mapping = aes(x = threadcount,color="dist")) + ggtitle("Total number of threads participated in")
+normGraphthreads
+qplot(threadcount,postcount,data = AuthorIDCount)
+quantile(AuthorIDCount$threadcount, probs = c(0, 0.25, 0.5, 0.75, 0.90,0.95,0.99,1))
+cor(AuthorIDCount$threadcount,AuthorIDCount$postcount)
 g = ggplot(data = newdata) + geom_point(mapping= aes (x = year,y = affect,color = factor(AuthorID))) +  facet_wrap(~ThreadID)+ theme(legend.position = "none")
 g
 
