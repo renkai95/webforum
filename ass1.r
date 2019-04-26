@@ -27,9 +27,9 @@ test=aggregate(data[7:30], data[31], mean)
 newdata = data %>% 
   group_by(AuthorID) %>%
   filter(n()>=100)
-newdata = data %>% 
+newdata2 = data %>% 
   group_by(AuthorID) %>%
-  filter(n()>=100)
+  filter(n()<100)
 anons = data %>%
   group_by(AuthorID) %>%
   filter(AuthorID<0)
@@ -48,8 +48,8 @@ g1 = ggplot(data = newdata1) + geom_point(mapping= aes (x = Date,y = AuthorID,co
 g1
 
 
-g2  =  ggplot(data  = data) + geom_point(mapping = aes ( x = timehour , y = posemo),color = "blue",position = position_jitter(w = 0.1, h = 0))
-g2  = g2+ geom_point(mapping = aes ( x = timehour , y = negemo),color = "red") + ylab("posemo(blue) and negemo(red)")
+g2  =  ggplot(data  = newdata2) + geom_point(mapping = aes ( x = timehour , y = negemo),color = "red",position = position_jitter(w = 0.1, h = 0))
+g2  = g2#+ geom_point(mapping = aes ( x = timehour , y = negemo),color = "red") + ylab("posemo(blue) and negemo(red)")
 g2
 
 #temp = group_by(newdata,AuthorID)
