@@ -18,7 +18,7 @@ AuthorsNamed = Authors [2:nrow(Authors),]
 dates <- as.Date(gdata$Date, "%Y-%m-%d")
 data=gdata
 y= as.POSIXlt(data$Time,format="%H:%M")
-data$year <- format(dates, "%Y")
+data$year <- as.numeric(format(dates, "%Y"))
 x=hour(y)
 
 data$timehour=x
@@ -59,7 +59,9 @@ lines(density(newdata2$timehour),main="Distribution of posts")
 
 normGraph = ggplot() + geom_density(data =newdata,mapping = aes(x = timehour,color="top posters n = 4963"))+geom_density(data =newdata2,mapping = aes(x = timehour,color="other posters n = 13929")) + ggtitle("Distribution of posts by hour")
 normGraph
-normGraphthreads = ggplot() + geom_density(data =AuthorIDCount,mapping = aes(x = threadcount,color="dist")) + ggtitle("Total number of threads participated in")
+normGraphYear = ggplot() + geom_histogram(data =newdata,mapping = aes(x = year,y=factor(year),color="top posters n = 4963"))+geom_histogram(data =newdata2,mapping = aes(x = year,y-factor(year),color="other posters n = 13929")) + ggtitle("Distribution of posts by year")
+normGraphYear
+normGraphthreads = ggplot() + geom_hist(data =AuthorIDCount,mapping = aes(x = threadcount,color="dist")) + ggtitle("Total number of threads participated in")
 normGraphthreads
 qplot(threadcount,postcount,data = AuthorIDCount)
 quantile(AuthorIDCount$threadcount, probs = c(0, 0.25, 0.5, 0.75, 0.90,0.95,0.99,1))
