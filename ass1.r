@@ -108,6 +108,8 @@ g4  = g4+ geom_line(data  = less100meanyear,mapping = aes (x= newdatameanyear[,1
 g4
 
 
+g5 = qplot(posemo,timehour,newdatamean)
+g5
 #temp = group_by(newdata,AuthorID)
 #s = summarize(temp,count=n(),)
 capture.output(s, file = "myfile.txt")
